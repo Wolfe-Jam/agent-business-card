@@ -1,7 +1,7 @@
 faf_version: "3.0"
 project:
   name: agent-business-card
-  goal: "Draw a business card for an AI agent, an MCP server or a person, as one self-contained HTML page: front and back, flip, light/dark, landscape/portrait."
+  goal: "Render a business card for an AI agent, an MCP server or a person, and print it to screen as one self-contained HTML page: front and back, flip, light/dark, landscape/portrait."
   main_language: TypeScript
   type: library  # found: no classifying signals — fallback
 stack:
@@ -26,8 +26,8 @@ stack:
   storage: slotignored
 human_context:
   who: Developers who need to show an AI agent, an MCP server or a person as a business card a human can read — tools, registries and pages that already have the facts and want one clean view of them.
-  what: "Draw a business card for an AI agent, an MCP server or a person, as one self-contained HTML page: front and back, flip, light/dark, landscape/portrait."
-  why: Agent cards (A2A Agent Card, MCP Server Card, .fafa) are written for machines. People need the same facts as a card they can look at, flip and share. This draws one from whichever reader supplies the facts, and guesses nothing — no colour declared means ink.
+  what: "Render a business card for an AI agent, an MCP server or a person, and print it to screen as one self-contained HTML page: front and back, flip, light/dark, landscape/portrait."
+  why: Agent cards (A2A Agent Card, MCP Server Card, .fafa) are written for machines. People need the same facts as a business card they can look at, flip and share. This prints one from whichever reader supplies the facts, and guesses nothing — no colour declared means ink.
   where: https://github.com/Wolfe-Jam/agent-business-card
   when: "2026-10-10"
   how: npm run build

@@ -2,10 +2,10 @@
 
 ## What this is
 
-`agent-business-card` draws a business card (front and back, flip, light/dark,
-landscape/portrait) as one self-contained HTML page. One file: `src/index.ts`.
-It has no runtime dependencies and no Node APIs, so it must keep running in
-the browser.
+`agent-business-card` renders a business card and prints it to screen (front
+and back, flip, light/dark, landscape/portrait) as one self-contained HTML
+page. One file: `src/index.ts`. It has no runtime dependencies and no Node
+APIs, so it must keep running in the browser.
 
 ## Commands
 
@@ -22,7 +22,7 @@ the browser.
 - **Escape every text field.** Only `tabs[].html` and `about` are trusted
   markup.
 - **Nothing is guessed.** No colour means ink. A field that isn't given isn't
-  drawn.
+  printed.
 - **Flip, tabs and toggles stay CSS-only.** The inline script is an
   enhancement, never required.
 - Node 22 or newer for development (`engines`).
