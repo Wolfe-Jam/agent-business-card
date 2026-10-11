@@ -1,7 +1,7 @@
 # agent-business-card
 
-Draw a business card for an AI agent, an MCP server or a person, as one
-self-contained HTML page.
+Render a business card for an AI agent, an MCP server or a person, and print
+it to screen as one self-contained HTML page.
 
 The front has a logo, a name, a title and a one-liner. Flip it over for the
 detail, in tabs you choose. It comes in light, dark or auto, landscape or
@@ -13,7 +13,7 @@ portrait, and in your colour or plain ink.
   one small inline script only adds conveniences (expand all, print).
 - **Runs anywhere.** No Node APIs and no dependencies, so it renders in Node and
   in the browser alike.
-- **Claims nothing it isn't given.** The card draws only the fields you pass,
+- **Claims nothing it isn't given.** The business card prints only the fields you pass,
   and every text field is escaped.
 
 ## Install
@@ -37,14 +37,14 @@ const html = renderBusinessCard({
     { key: "about", label: "About", heading: "About", html: "<p>Answers weather questions.</p>" },
     { key: "skills", label: "Skills", heading: "Skills", html: "<p>forecast</p>" },
   ],
-  about: "<p>The public card of an AI agent.</p>",
+  about: "<p>The public business card of an AI agent.</p>",
   accent: "#0066cc", // optional
 });
 ```
 
 `html` is a complete page, starting with `<!doctype html>`.
 
-### The card
+### The business card
 
 | Field | What it is |
 |---|---|
@@ -73,10 +73,10 @@ build them from trusted or escaped content. `escapeHtml` is exported for that.
 
 ### Colour
 
-A card's colour belongs to its owner, and nothing is guessed. Pass one as
-`card.accent` or the `accent` option. With neither, the card is drawn in ink:
+A business card's colour belongs to its owner, and nothing is guessed. Pass
+one as `card.accent` or the `accent` option. With neither, it prints in ink:
 black on a light card, white on a dark one. A value that isn't a hex colour is
-dropped, and the card falls back to ink.
+dropped, and the business card falls back to ink.
 
 ## Also exported
 
@@ -87,8 +87,8 @@ dropped, and the card falls back to ink.
 
 ## Used by
 
-[mcp-context-card](https://github.com/Wolfe-Jam/mcp-context-card) draws a
-project's card from its `AGENTS.md`, memory and identity files.
+[mcp-context-card](https://github.com/Wolfe-Jam/mcp-context-card) prints a
+project's business card from its `AGENTS.md`, memory and identity files.
 
 ## License
 
