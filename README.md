@@ -16,6 +16,10 @@ portrait, and in your colour or plain ink.
 - **Claims nothing it isn't given.** The business card prints only the fields you pass,
   and every text field is escaped.
 
+## Print one now
+
+Paste any GitHub repo at **[wolfe-jam.github.io/agent-business-card](https://wolfe-jam.github.io/agent-business-card/)** and its business card prints in your browser, from the repo's own public files. A repo with a `.fafa` at `.well-known/fafa` shows as claimed, in its owner's colour. The page is in [`docs/`](docs/).
+
 ## Install
 
 ```
