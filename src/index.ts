@@ -82,6 +82,9 @@ body[data-theme="dark"] #ink:checked~.stage .bcard{--card:#fff;--fg:#0a0a0a;--mu
   body:not([data-theme]) #ink:checked~.stage .bcard{--card:#0d0d0d;--fg:#fafafa;--muted:#9a9aa0;--line:rgba(255,255,255,.13);--chip:rgba(255,255,255,.07);--card-shadow:0 0 0 1px rgba(255,255,255,.16),0 8px 40px color-mix(in srgb,var(--accent) 20%,transparent)}
 }
 .bcard{color:var(--fg)}
+/* Links take the card's ink, underlined in the accent, so they read on light
+   and dark alike (the browser default blue vanishes on a dark card). */
+.bcard a{color:var(--fg);text-decoration-color:var(--accent);text-underline-offset:2px}
 *{box-sizing:border-box}
 body{margin:0;background:var(--page-bg);color:var(--page-muted);
   font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;

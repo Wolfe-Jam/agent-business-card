@@ -103,3 +103,7 @@ test("expanded: both faces flat, for print and screenshots", () => {
   const html = renderBusinessCard(card(), { expanded: true });
   assert.match(html, /class="[^"]*\bflat\b/);
 });
+
+test("links on the business card take its ink, not the browser's default blue", () => {
+  assert.match(renderBusinessCard(card()), /\.bcard a\{color:var\(--fg\)/);
+});
