@@ -1,6 +1,6 @@
 {
   "name": "agent-business-card",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Render a business card for an AI agent, an MCP server or a person, and print it to screen as one self-contained HTML page: front and back, flip, light/dark, landscape/portrait.",
   "keywords": [
     "business-card",
