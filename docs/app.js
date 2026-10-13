@@ -141,6 +141,7 @@ async function gallery() {
       if (accent) a.style.setProperty("--tile", accent);
       const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; n.textContent = text; a.append(n); };
       el("b", "", card.name);
+      el("span", "r", repo);
       if (card.title) el("span", "t", card.title);
       if (card.oneLiner) el("span", "o", card.oneLiner);
       el("span", "chip", claimed ? "claimed" : "public data");
