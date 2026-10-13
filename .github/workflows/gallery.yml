@@ -1,0 +1,32 @@
+name: gallery
+
+# Re-snapshot the gallery's business cards weekly (and on demand), so the
+# page's gallery stays current without spending visitors' GitHub limit.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/gallery.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit if a business card changed
+        run: |
+          git diff --quiet docs/gallery.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/gallery.json
+          git commit -m "gallery: refresh the snapshot"
+          git push

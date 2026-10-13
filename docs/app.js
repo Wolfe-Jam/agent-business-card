@@ -1,6 +1,7 @@
 import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.1.1/+esm";
 import { parse as parseYaml } from "https://cdn.jsdelivr.net/npm/yaml@2.9.0/+esm";
-import { parseRepoInput, buildCard, fafaSnippet, toHex6, apcaLc } from "./reader.js";
+import { parseRepoInput, fafaSnippet, toHex6, apcaLc } from "./reader.js";
+import { readRepo } from "./source.js";
 
 // The business card's two faces (agent-business-card's --card), and APCA's floor for short bold text.
 const CARD_LIGHT = "#ffffff", CARD_DARK = "#0d0d0d", MIN_LC = 45;
@@ -11,47 +12,7 @@ const picker = $("accent"), hex = $("hex"), inkBtn = $("ink"), share = $("share"
 const claimText = $("claim-text"), fafaBox = $("fafa"), fafaCopy = $("copy-fafa");
 let current = null; // { ref, card, fafaPath }
 
-async function json(url) {
-  const r = await fetch(url, { headers: { Accept: "application/vnd.github+json" } });
-  if (r.status === 404) return undefined;
-  if (r.status === 403 || r.status === 429) throw new Error("GitHub's hourly limit for this browser is used up. Try again in a while.");
-  if (!r.ok) throw new Error(`GitHub answered ${r.status}.`);
-  return r.json();
-}
-async function raw(ref, branch, path) {
-  const r = await fetch(`https://raw.githubusercontent.com/${ref.owner}/${ref.repo}/${branch}/${path}`);
-  return r.ok ? r.text() : undefined;
-}
-const tryParse = (fn, text) => { try { return text === undefined ? undefined : fn(text); } catch { return undefined; } };
-
-async function load(ref) {
-  const gh = await json(`https://api.github.com/repos/${ref.owner}/${ref.repo}`);
-  if (!gh) throw new Error(`No public repo at github.com/${ref.owner}/${ref.repo}.`);
-  const branch = gh.default_branch || "main";
-  const [rel, wk, af, sj, pk] = await Promise.all([
-    json(`https://api.github.com/repos/${ref.owner}/${ref.repo}/releases/latest`).catch(() => undefined),
-    raw(ref, branch, ".well-known/fafa"),
-    raw(ref, branch, "agent.fafa"),
-    raw(ref, branch, "server.json"),
-    raw(ref, branch, "package.json"),
-  ]);
-  const fafaText = wk ?? af;
-  const fafa = tryParse(parseYaml, fafaText);
-  const fafaPath = wk !== undefined ? ".well-known/fafa" : af !== undefined ? "agent.fafa" : undefined;
-  const card = buildCard(
-    {
-      ref: { owner: gh.owner?.login ?? ref.owner, repo: gh.name ?? ref.repo },
-      gh,
-      release: rel?.tag_name,
-      fafa: fafa && typeof fafa === "object" ? fafa : undefined,
-      fafaPath,
-      serverJson: tryParse(JSON.parse, sj),
-      pkg: tryParse(JSON.parse, pk),
-    },
-    { escapeHtml },
-  );
-  return { card, fafaPath: fafa && typeof fafa === "object" ? fafaPath : undefined };
-}
+const load = (ref) => readRepo(ref, { parseYaml, escapeHtml });
 
 
 // ?accent=#hex → that colour · ?accent=ink → ink even if the owner declared one · none → the owner's colour, else ink.
@@ -160,6 +121,35 @@ fafaCopy.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(fafaBox.textContent); fafaCopy.textContent = "Copied"; setTimeout(() => (fafaCopy.textContent = "Copy .fafa"), 1500); }
   catch { getSelection().selectAllChildren(fafaBox); }
 });
+
+// The gallery: a snapshot taken by a scheduled Action (scripts/gallery.mjs),
+// read from the repo so a new snapshot shows without a redeploy. A click
+// prints that business card live.
+const GALLERY = "https://raw.githubusercontent.com/Wolfe-Jam/agent-business-card/main/docs/gallery.json";
+async function gallery() {
+  try {
+    const r = await fetch(GALLERY);
+    if (!r.ok) return;
+    const { updated, cards } = await r.json();
+    const tiles = $("tiles");
+    for (const { repo, claimed, card } of cards) {
+      const a = document.createElement("a");
+      a.className = "tile";
+      a.href = `?repo=${repo}`;
+      const accent = claimed ? safeAccent(card.accent) : undefined;
+      if (accent) a.style.setProperty("--tile", accent);
+      const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; n.textContent = text; a.append(n); };
+      el("b", "", card.name);
+      if (card.title) el("span", "t", card.title);
+      if (card.oneLiner) el("span", "o", card.oneLiner);
+      el("span", "chip", claimed ? "claimed" : "public data");
+      tiles.append(a);
+    }
+    $("gallery-note").textContent = `Printed from each repo's public files, updated ${updated}. Pick one to print it live.`;
+    $("gallery").hidden = false;
+  } catch { /* no gallery is fine */ }
+}
+gallery();
 
 const start = new URLSearchParams(location.search).get("repo");
 if (start) { input.value = start; show(start); }
