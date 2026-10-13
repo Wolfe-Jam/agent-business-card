@@ -212,6 +212,179 @@
       }
     },
     {
+      "repo": "react/react",
+      "claimed": false,
+      "card": {
+        "name": "react",
+        "title": "Repository · v19.3.0",
+        "oneLiner": "The library for web and native user interfaces.",
+        "description": "The library for web and native user interfaces.",
+        "domain": "react.dev",
+        "chips": [
+          {
+            "text": "public data"
+          },
+          {
+            "text": "MIT"
+          }
+        ],
+        "tabs": [
+          {
+            "key": "about",
+            "label": "About",
+            "heading": "About",
+            "html": "<p class=\"lead\">The library for web and native user interfaces.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/react/react\" target=\"_blank\" rel=\"noopener\">react/react</a></td></tr><tr><th>Version</th><td>v19.3.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://react.dev/\" target=\"_blank\" rel=\"noopener\">react.dev</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">declarative</span> <span class=\"tag\">frontend</span> <span class=\"tag\">javascript</span> <span class=\"tag\">library</span> <span class=\"tag\">react</span> <span class=\"tag\">ui</span></td></tr></tbody></table>"
+          },
+          {
+            "key": "sources",
+            "label": "Sources",
+            "heading": "Sources",
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td>not found</td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/react/react/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/react/react\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+          }
+        ],
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+      }
+    },
+    {
+      "repo": "stripe/ai",
+      "claimed": false,
+      "card": {
+        "name": "ai",
+        "title": "Repository",
+        "oneLiner": "One-stop shop for building AI-powered products and businesses with Stripe.",
+        "description": "One-stop shop for building AI-powered products and businesses with Stripe.",
+        "domain": "docs.stripe.com",
+        "chips": [
+          {
+            "text": "public data"
+          },
+          {
+            "text": "MIT"
+          }
+        ],
+        "tabs": [
+          {
+            "key": "about",
+            "label": "About",
+            "heading": "About",
+            "html": "<p class=\"lead\">One-stop shop for building AI-powered products and businesses with Stripe.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/stripe/ai\" target=\"_blank\" rel=\"noopener\">stripe/ai</a></td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://docs.stripe.com/agents\" target=\"_blank\" rel=\"noopener\">docs.stripe.com/agents</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">ai</span> <span class=\"tag\">gemini-cli-extension</span> <span class=\"tag\">llm</span> <span class=\"tag\">llm-agents</span> <span class=\"tag\">mcp</span> <span class=\"tag\">python</span> <span class=\"tag\">typescript</span> <span class=\"tag\">workflows</span></td></tr></tbody></table>"
+          },
+          {
+            "key": "sources",
+            "label": "Sources",
+            "heading": "Sources",
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td>not found</td></tr><tr><td><code>package.json</code></td><td>not found</td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/stripe/ai\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+          }
+        ],
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+      }
+    },
+    {
+      "repo": "cloudflare/mcp-server-cloudflare",
+      "claimed": false,
+      "card": {
+        "name": "mcp-server-cloudflare",
+        "title": "MCP server · v1.0.0",
+        "oneLiner": "Cloudflare MCP servers",
+        "description": "Cloudflare MCP servers",
+        "domain": "github.com",
+        "chips": [
+          {
+            "text": "public data"
+          },
+          {
+            "text": "MCP Registry"
+          },
+          {
+            "text": "Apache-2.0"
+          }
+        ],
+        "tabs": [
+          {
+            "key": "about",
+            "label": "About",
+            "heading": "About",
+            "html": "<p class=\"lead\">Cloudflare MCP servers</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/cloudflare/mcp-server-cloudflare\" target=\"_blank\" rel=\"noopener\">cloudflare/mcp-server-cloudflare</a></td></tr><tr><th>Version</th><td>v1.0.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://github.com/cloudflare/mcp-server-cloudflare\" target=\"_blank\" rel=\"noopener\">github.com/cloudflare/mcp-server-cloudflare</a></td></tr><tr><th>MCP Registry</th><td><code>com.cloudflare.mcp/mcp</code></td></tr></tbody></table>"
+          },
+          {
+            "key": "sources",
+            "label": "Sources",
+            "heading": "Sources",
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td><a href=\"https://github.com/cloudflare/mcp-server-cloudflare/blob/main/server.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/cloudflare/mcp-server-cloudflare/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/cloudflare/mcp-server-cloudflare\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+          }
+        ],
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+      }
+    },
+    {
+      "repo": "supabase/mcp",
+      "claimed": false,
+      "card": {
+        "name": "mcp",
+        "title": "Repository",
+        "oneLiner": "Connect Supabase to your AI assistants",
+        "description": "Connect Supabase to your AI assistants",
+        "domain": "supabase.com",
+        "chips": [
+          {
+            "text": "public data"
+          },
+          {
+            "text": "Apache-2.0"
+          }
+        ],
+        "tabs": [
+          {
+            "key": "about",
+            "label": "About",
+            "heading": "About",
+            "html": "<p class=\"lead\">Connect Supabase to your AI assistants</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/supabase/mcp\" target=\"_blank\" rel=\"noopener\">supabase/mcp</a></td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://supabase.com/mcp\" target=\"_blank\" rel=\"noopener\">supabase.com/mcp</a></td></tr></tbody></table>"
+          },
+          {
+            "key": "sources",
+            "label": "Sources",
+            "heading": "Sources",
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td>not found</td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/supabase/mcp/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/supabase/mcp\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+          }
+        ],
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+      }
+    },
+    {
+      "repo": "nasa/fprime",
+      "claimed": false,
+      "card": {
+        "name": "fprime",
+        "title": "Repository · v4.4.1",
+        "oneLiner": "F´ - A flight software and embedded systems framework",
+        "description": "F´ - A flight software and embedded systems framework",
+        "domain": "fprime.jpl.nasa.gov",
+        "chips": [
+          {
+            "text": "public data"
+          },
+          {
+            "text": "Apache-2.0"
+          }
+        ],
+        "tabs": [
+          {
+            "key": "about",
+            "label": "About",
+            "heading": "About",
+            "html": "<p class=\"lead\">F´ - A flight software and embedded systems framework</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/nasa/fprime\" target=\"_blank\" rel=\"noopener\">nasa/fprime</a></td></tr><tr><th>Version</th><td>v4.4.1</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://fprime.jpl.nasa.gov/\" target=\"_blank\" rel=\"noopener\">fprime.jpl.nasa.gov</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">components</span> <span class=\"tag\">cpp</span> <span class=\"tag\">embedded</span> <span class=\"tag\">embedded-systems</span> <span class=\"tag\">flight</span> <span class=\"tag\">flight-software</span> <span class=\"tag\">fprime</span> <span class=\"tag\">framework</span></td></tr></tbody></table>"
+          },
+          {
+            "key": "sources",
+            "label": "Sources",
+            "heading": "Sources",
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td>not found</td></tr><tr><td><code>package.json</code></td><td>not found</td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/nasa/fprime\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+          }
+        ],
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+      }
+    },
+    {
       "repo": "Wolfe-Jam/mcp-context-card",
       "claimed": true,
       "card": {
