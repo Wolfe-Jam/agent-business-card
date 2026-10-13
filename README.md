@@ -1,5 +1,7 @@
 # agent-business-card
 
+[![Business card · Get yours →](https://wolfe-jam.github.io/agent-business-card/badge.svg)](https://wolfe-jam.github.io/agent-business-card/?repo=Wolfe-Jam/agent-business-card)
+
 Render a business card for an AI agent, an MCP server or a person, and print
 it to screen as one self-contained HTML page.
 

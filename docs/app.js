@@ -78,6 +78,7 @@ function draw() {
     contrast.textContent = faint.length ? `This colour is faint on ${faint.join(" and on ")}. Lc ${MIN_LC} or more reads well. Text in it may be hard to read there.` : "";
   } else contrast.textContent = "";
   share.value = location.href;
+  $("badge-md").textContent = badgeMarkdown();
   const { ref, card: c, fafaPath } = current;
   if (fafaPath) {
     claimText.textContent = `Claimed. The owner's .fafa is at ${fafaPath} in github.com/${ref.owner}/${ref.repo}.`;
@@ -122,6 +123,16 @@ inkBtn.addEventListener("click", () => { setUrl({ accent: current?.card.accent ?
 copyBtn.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(share.value); copyBtn.textContent = "Copied"; setTimeout(() => (copyBtn.textContent = "Copy link"), 1500); }
   catch { share.select(); }
+});
+// The README badge: the ink badge, linking to this business card's share link.
+function badgeMarkdown() {
+  const base = `${location.origin}${location.pathname}`;
+  return `[![Business card · Get yours →](${base}badge.svg)](${share.value})`;
+}
+$("copy-badge").addEventListener("click", async (ev) => {
+  const btn = ev.currentTarget;
+  try { await navigator.clipboard.writeText(badgeMarkdown()); btn.textContent = "Copied"; setTimeout(() => (btn.textContent = "Copy badge"), 1500); }
+  catch { getSelection().selectAllChildren($("badge-md")); }
 });
 fafaCopy.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(fafaBox.textContent); fafaCopy.textContent = "Copied"; setTimeout(() => (fafaCopy.textContent = "Copy .fafa"), 1500); }
