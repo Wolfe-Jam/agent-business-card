@@ -60,11 +60,25 @@ function chosenAccent() {
   return a === "ink" ? "ink" : safeAccent(a ?? undefined);
 }
 
+// ?theme=light|dark (none = follow the viewer) · ?layout=portrait (none = landscape).
+const THEMES = ["auto", "light", "dark"], LAYOUTS = ["landscape", "portrait"];
+function chosen(name, allowed) {
+  const v = new URLSearchParams(location.search).get(name);
+  return allowed.includes(v) ? v : allowed[0];
+}
+
 function draw() {
   if (!current) return;
   const accent = chosenAccent();
   const card = accent === "ink" ? { ...current.card, accent: undefined } : current.card;
-  frame.srcdoc = renderBusinessCard(card, accent && accent !== "ink" ? { accent } : {});
+  const theme = chosen("theme", THEMES), layout = chosen("layout", LAYOUTS);
+  frame.srcdoc = renderBusinessCard(card, {
+    ...(accent && accent !== "ink" ? { accent } : {}),
+    ...(theme !== "auto" ? { theme } : {}),
+    ...(layout !== "landscape" ? { layout } : {}),
+  });
+  for (const [id, v] of [["theme-seg", theme], ["layout-seg", layout]])
+    for (const b of $(id).querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.v === v));
   frame.hidden = false;
   const shown = accent === "ink" ? undefined : accent ?? safeAccent(current.card.accent);
   picker.value = shown && /^#[0-9a-f]{6}$/i.test(shown) ? shown : "#0a0a0a";
@@ -124,6 +138,14 @@ copyBtn.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(share.value); copyBtn.textContent = "Copied"; setTimeout(() => (copyBtn.textContent = "Copy link"), 1500); }
   catch { share.select(); }
 });
+for (const [id, name, dflt] of [["theme-seg", "theme", "auto"], ["layout-seg", "layout", "landscape"]])
+  $(id).addEventListener("click", (ev) => {
+    const v = ev.target.closest("button")?.dataset.v;
+    if (!v) return;
+    setUrl({ [name]: v === dflt ? null : v });
+    draw();
+  });
+
 // The README badge: the ink badge, linking to this business card's share link.
 function badgeMarkdown() {
   const base = `${location.origin}${location.pathname}`;
