@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { escapeHtml, renderBusinessCard } from "../src/index.js";
 import { parse as parseYaml } from "yaml";
-import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6 } from "../docs/reader.js";
+import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6, apcaLc } from "../docs/reader.js";
 
 const ref = { owner: "acme", repo: "weather" };
 const gh = { name: "weather", description: "Forecasts on request.", default_branch: "main", license: { spdx_id: "MIT" }, homepage: "", topics: ["mcp"] };
@@ -115,4 +115,14 @@ test("toHex6: hex in any common form, normalised; anything else refused", () => 
   assert.equal(toHex6(" #0a0a0a "), "#0a0a0a");
   assert.equal(toHex6("rgb(255,0,0)"), undefined);
   assert.equal(toHex6("#ff66"), undefined);
+});
+
+test("apcaLc: matches APCA's reference values, one curve per polarity", () => {
+  assert.equal(apcaLc("#000000", "#ffffff").toFixed(1), "106.0");
+  assert.equal(apcaLc("#888888", "#ffffff").toFixed(1), "63.1");
+  assert.equal(apcaLc("#ffffff", "#000000").toFixed(1), "-107.9");
+  // WCAG 2 passes #0066cc on the dark card (3.4:1); APCA calls it faint.
+  assert.ok(Math.abs(apcaLc("#0066cc", "#0d0d0d")) < 45);
+  // Our orange reads on both faces.
+  assert.ok(apcaLc("#ff6b35", "#ffffff") >= 45 && Math.abs(apcaLc("#ff6b35", "#0d0d0d")) >= 45);
 });
