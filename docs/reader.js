@@ -69,8 +69,9 @@ export function buildCard(src, { escapeHtml }) {
 
   const name = str(agent.displayName) ?? str(agent.name) ?? str(sj.title) ?? str(gh.name) ?? ref.repo;
   const description = str(agent.description) ?? str(sj.description) ?? str(pkg.description) ?? str(gh.description);
-  const version =
-    str(agent.version) ?? str(sj.version) ?? (pkg.private ? undefined : str(pkg.version)) ?? str(release)?.replace(/^v(?=\d)/, "");
+  // A version must look like one: a template placeholder such as "${VERSION}" is skipped.
+  const ver = (v) => { const t = str(v)?.replace(/^v(?=\d)/, ""); return t && /^\d+(\.\d+)*([-+.][0-9A-Za-z.-]+)?$/.test(t) ? t : undefined; };
+  const version = ver(agent.version) ?? ver(sj.version) ?? (pkg.private ? undefined : ver(pkg.version)) ?? ver(release);
   const kind = str(sj.name) ? "MCP server" : str(pkg.name) && !pkg.private ? "npm package" : "Repository";
   const license = str(agent.license) ?? str(pkg.license) ?? (gh.license?.spdx_id !== "NOASSERTION" ? str(gh.license?.spdx_id) : undefined);
   const homepage = httpUrl(gh.homepage) ?? httpUrl(sj.websiteUrl) ?? httpUrl(pkg.homepage);

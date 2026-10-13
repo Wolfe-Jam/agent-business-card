@@ -36,6 +36,14 @@ pre{margin:12px 0;padding:14px 16px;overflow:auto;white-space:pre-wrap;overflow-
 .seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden}
 .seg button{border:0;border-radius:0;background:transparent;color:var(--fg);padding:9px 14px;font-weight:600}
 .seg button[aria-pressed=true]{background:var(--fg);color:var(--bg)}
+#gallery{margin:32px 0 0}#gallery h2{font-size:18px;margin:0 0 4px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:12px 0 0}
+.tile{display:block;padding:14px 16px 16px;border:1.5px solid var(--line);border-top:4px solid var(--tile,var(--fg));border-radius:12px;color:var(--fg);text-decoration:none;background:var(--field)}
+.tile:hover{border-color:var(--fg);border-top-color:var(--tile,var(--fg))}
+.tile b{display:block;font-size:16px;overflow-wrap:anywhere}
+.tile .t{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:2px 0 6px}
+.tile .o{display:block;font-size:14px;color:var(--muted);margin:0 0 10px}
+.tile .chip{display:inline-block;font-size:12px;font-weight:700;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
 footer{margin:40px 0 0;color:var(--muted);font-size:14px}
 footer a{color:inherit}
 </style>
@@ -88,6 +96,12 @@ footer a{color:inherit}
     <p id="claim-text" class="hint"></p>
     <pre id="fafa" hidden></pre>
     <button id="copy-fafa" class="ghost" type="button" hidden>Copy .fafa</button>
+  </section>
+
+  <section id="gallery" hidden>
+    <h2>Gallery</h2>
+    <p class="hint" id="gallery-note"></p>
+    <div class="tiles" id="tiles"></div>
   </section>
 
   <footer>Printed by <a href="https://www.npmjs.com/package/agent-business-card">agent-business-card</a> (MIT), in your browser. No server, no sign-in. · <a href="https://github.com/Wolfe-Jam/agent-business-card">Source</a></footer>

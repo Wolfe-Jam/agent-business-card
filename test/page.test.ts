@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { escapeHtml, renderBusinessCard } from "../src/index.js";
 import { parse as parseYaml } from "yaml";
 import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6, apcaLc } from "../docs/reader.js";
+import { readRepo } from "../docs/source.js";
 
 const ref = { owner: "acme", repo: "weather" };
 const gh = { name: "weather", description: "Forecasts on request.", default_branch: "main", license: { spdx_id: "MIT" }, homepage: "", topics: ["mcp"] };
@@ -125,4 +126,34 @@ test("apcaLc: matches APCA's reference values, one curve per polarity", () => {
   assert.ok(Math.abs(apcaLc("#0066cc", "#0d0d0d")) < 45);
   // Our orange reads on both faces.
   assert.ok(apcaLc("#ff6b35", "#ffffff") >= 45 && Math.abs(apcaLc("#ff6b35", "#0d0d0d")) >= 45);
+});
+
+test("a version must look like one: a template placeholder falls through", () => {
+  const c = card({ serverJson: { name: "io.github.acme/weather", version: "${VERSION}" }, release: "v1.4.0" });
+  assert.equal(c.title, "MCP server · v1.4.0");
+  assert.equal(card({ release: "v2.0.0-rc.1" }).title, "Repository · v2.0.0-rc.1");
+  assert.equal(card({ release: "nightly" }).title, "Repository");
+});
+
+test("readRepo: reads a repo's files in trust order, claimed by its .fafa", async () => {
+  const files = {
+    "https://api.github.com/repos/acme/weather": { name: "weather", owner: { login: "Acme" }, default_branch: "main", description: "From GitHub." },
+    "https://api.github.com/repos/acme/weather/releases/latest": { tag_name: "v1.2.0" },
+    "https://raw.githubusercontent.com/acme/weather/main/.well-known/fafa": 'agent:\n  name: "weather"\n  description: "From the owner."\nmetadata:\n  cards:\n    accent: "#0066cc"\n',
+  };
+  const seen = [];
+  const fakeFetch = async (url, opts) => {
+    seen.push(opts?.headers?.Authorization);
+    const body = files[url];
+    if (body === undefined) return { ok: false, status: 404 };
+    return { ok: true, status: 200, json: async () => body, text: async () => body };
+  };
+  const { ref, card, fafaPath } = await readRepo({ owner: "acme", repo: "weather" }, { parseYaml, escapeHtml, token: "t", fetch: fakeFetch });
+  assert.deepEqual(ref, { owner: "Acme", repo: "weather" });
+  assert.equal(fafaPath, ".well-known/fafa");
+  assert.equal(card.description, "From the owner.");
+  assert.equal(card.accent, "#0066cc");
+  assert.equal(card.title, "Repository · v1.2.0");
+  assert.ok(seen.includes("Bearer t"));
+  await assert.rejects(readRepo({ owner: "acme", repo: "gone" }, { parseYaml, escapeHtml, fetch: fakeFetch }), /No public repo/);
 });
