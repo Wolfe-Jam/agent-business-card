@@ -458,21 +458,23 @@
             "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>agent.fafa</code></td><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp/blob/main/agent.fafa\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>server.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp/blob/main/server.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
           }
         ],
-        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from the owner's own <code>.fafa</code> and the repo's public files.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from the owner's own <code>.fafa</code> and the repo's public files.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>",
+        "accent": "#FF6B35"
       }
     },
     {
       "repo": "Wolfe-Jam/faf-mcp",
-      "claimed": false,
+      "claimed": true,
       "card": {
         "name": ".FAF Context",
         "title": "MCP server · v4.0.0",
-        "oneLiner": ".FAF Context — persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
-        "description": ".FAF Context — persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
+        "oneLiner": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
+        "description": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
         "domain": "faf.one",
         "chips": [
           {
-            "text": "public data"
+            "text": "claimed",
+            "accent": true
           },
           {
             "text": "MCP Registry"
@@ -486,16 +488,17 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">.FAF Context — persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Version</th><td>v4.0.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">.FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:faf-mcp</code></td></tr><tr><th>Version</th><td>v4.0.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
             "label": "Sources",
             "heading": "Sources",
-            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>.well-known/fafa</code></td><td>not found</td></tr><tr><td><code>server.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp/blob/main/server.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
+            "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>agent.fafa</code></td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp/blob/main/agent.fafa\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>server.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp/blob/main/server.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>package.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp/blob/main/package.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
           }
         ],
-        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from public GitHub data. Not endorsed by the owner.</p><p>Is this yours? Add a <code>.fafa</code> to make it yours.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from the owner's own <code>.fafa</code> and the repo's public files.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>",
+        "accent": "#00B8B8"
       }
     },
     {
@@ -571,7 +574,8 @@
             "html": "<table class=\"disc\"><thead><tr><th>source</th><th></th></tr></thead><tbody><tr><td><code>agent.fafa</code></td><td><a href=\"https://github.com/Wolfe-Jam/gemini-faf-mcp/blob/main/agent.fafa\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>server.json</code></td><td><a href=\"https://github.com/Wolfe-Jam/gemini-faf-mcp/blob/main/server.json\" target=\"_blank\" rel=\"noopener\">read</a></td></tr><tr><td><code>package.json</code></td><td>not found</td></tr><tr><td>GitHub repository data</td><td><a href=\"https://github.com/Wolfe-Jam/gemini-faf-mcp\" target=\"_blank\" rel=\"noopener\">read</a></td></tr></tbody></table>\n  <p class=\"fetch\">Every field on this business card comes from one of these. Nothing is guessed.</p>"
           }
         ],
-        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from the owner's own <code>.fafa</code> and the repo's public files.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>"
+        "about": "<p class=\"whatis-head\">Business Cards for Agents</p><p>Printed from the owner's own <code>.fafa</code> and the repo's public files.</p><p class=\"whatis-foot\">Printed by <code>agent-business-card</code></p>",
+        "accent": "#4F87ED"
       }
     }
   ]
