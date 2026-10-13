@@ -33,6 +33,7 @@ function draw() {
   const accent = chosenAccent();
   const card = accent === "ink" ? { ...current.card, accent: undefined } : current.card;
   const theme = chosen("theme", THEMES), layout = chosen("layout", LAYOUTS);
+  frame.classList.toggle("portrait", layout === "portrait");
   frame.srcdoc = renderBusinessCard(card, {
     ...(accent && accent !== "ink" ? { accent } : {}),
     ...(theme !== "auto" ? { theme } : {}),
