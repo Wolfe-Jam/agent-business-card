@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { escapeHtml, renderBusinessCard } from "../src/index.js";
 import { parse as parseYaml } from "yaml";
-import { parseRepoInput, buildCard, oneLine, fafaSnippet } from "../docs/reader.js";
+import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6 } from "../docs/reader.js";
 
 const ref = { owner: "acme", repo: "weather" };
 const gh = { name: "weather", description: "Forecasts on request.", default_branch: "main", license: { spdx_id: "MIT" }, homepage: "", topics: ["mcp"] };
@@ -107,4 +107,12 @@ test("the .fafa gets the same description the business card prints, in full", ()
   const c = card({ pkg: { name: "weather", description: text } });
   assert.equal(c.description, text);
   assert.equal(c.oneLiner, "Forecasts from the package description.");
+});
+
+test("toHex6: hex in any common form, normalised; anything else refused", () => {
+  assert.equal(toHex6("#FF6600"), "#ff6600");
+  assert.equal(toHex6("f60"), "#ff6600");
+  assert.equal(toHex6(" #0a0a0a "), "#0a0a0a");
+  assert.equal(toHex6("rgb(255,0,0)"), undefined);
+  assert.equal(toHex6("#ff66"), undefined);
 });

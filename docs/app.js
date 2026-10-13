@@ -1,10 +1,10 @@
 import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.1.1/+esm";
 import { parse as parseYaml } from "https://cdn.jsdelivr.net/npm/yaml@2.9.0/+esm";
-import { parseRepoInput, buildCard, fafaSnippet } from "./reader.js";
+import { parseRepoInput, buildCard, fafaSnippet, toHex6 } from "./reader.js";
 
 const $ = (id) => document.getElementById(id);
 const form = $("paste"), input = $("repo"), status = $("status"), frame = $("card");
-const picker = $("accent"), inkBtn = $("ink"), share = $("share"), copyBtn = $("copy"), contrast = $("contrast");
+const picker = $("accent"), hex = $("hex"), inkBtn = $("ink"), share = $("share"), copyBtn = $("copy"), contrast = $("contrast");
 const claimText = $("claim-text"), fafaBox = $("fafa"), fafaCopy = $("copy-fafa");
 let current = null; // { ref, card, fafaPath }
 
@@ -73,6 +73,7 @@ function draw() {
   frame.hidden = false;
   const shown = accent === "ink" ? undefined : accent ?? safeAccent(current.card.accent);
   picker.value = shown && /^#[0-9a-f]{6}$/i.test(shown) ? shown : "#0a0a0a";
+  if (document.activeElement !== hex) { hex.value = shown ? toHex6(shown) ?? "" : ""; hex.removeAttribute("aria-invalid"); }
   inkBtn.disabled = !shown;
   // Only for a colour picked here: the owner's own declared colour is theirs to choose.
   if (accent && accent !== "ink" && /^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(accent)) {
@@ -115,6 +116,12 @@ async function show(text) {
 
 form.addEventListener("submit", (ev) => { ev.preventDefault(); setUrl({ accent: null }); show(input.value); });
 picker.addEventListener("input", () => { setUrl({ accent: picker.value }); draw(); });
+hex.addEventListener("input", () => {
+  const v = toHex6(hex.value);
+  hex.setAttribute("aria-invalid", String(!v && hex.value.trim() !== ""));
+  if (v) { setUrl({ accent: v }); draw(); }
+});
+hex.addEventListener("blur", () => draw());
 inkBtn.addEventListener("click", () => { setUrl({ accent: current?.card.accent ? "ink" : null }); draw(); });
 copyBtn.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(share.value); copyBtn.textContent = "Copied"; setTimeout(() => (copyBtn.textContent = "Copy link"), 1500); }

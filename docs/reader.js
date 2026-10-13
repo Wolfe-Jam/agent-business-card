@@ -139,3 +139,11 @@ export function fafaSnippet({ name, description, accent }) {
   if (accent) lines.push("metadata:", "  cards:", `    accent: ${q(accent)}`);
   return lines.join("\n") + "\n";
 }
+
+// "#f60", "f60", "#FF6600" → "#ff6600"; anything else → undefined.
+export function toHex6(v) {
+  const m = String(v).trim().match(/^#?([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!m) return undefined;
+  const h = m[1].length === 3 ? [...m[1]].map((c) => c + c).join("") : m[1];
+  return `#${h.toLowerCase()}`;
+}
