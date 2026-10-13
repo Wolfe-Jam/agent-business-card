@@ -147,3 +147,23 @@ export function toHex6(v) {
   const h = m[1].length === 3 ? [...m[1]].map((c) => c + c).join("") : m[1];
   return `#${h.toLowerCase()}`;
 }
+
+/**
+ * APCA lightness contrast (Lc, APCA-W3 0.0.98G) of text on a background, both
+ * hex. Positive: dark text on light. Negative: light text on dark. The two
+ * polarities use different curves, which is the point: WCAG 2's single ratio
+ * overrates dark colours on a dark background.
+ */
+export function apcaLc(text, bg) {
+  const y = (hex) => {
+    const n = parseInt(toHex6(hex).slice(1), 16);
+    const [r, g, b] = [n >> 16, (n >> 8) & 255, n & 255].map((c) => (c / 255) ** 2.4);
+    const v = 0.2126729 * r + 0.7151522 * g + 0.072175 * b;
+    return v > 0.022 ? v : v + (0.022 - v) ** 1.414;
+  };
+  const t = y(text), b = y(bg);
+  if (Math.abs(b - t) < 0.0005) return 0;
+  if (b > t) { const s = (b ** 0.56 - t ** 0.57) * 1.14; return s < 0.1 ? 0 : (s - 0.027) * 100; }
+  const s = (b ** 0.65 - t ** 0.62) * 1.14;
+  return s > -0.1 ? 0 : (s + 0.027) * 100;
+}

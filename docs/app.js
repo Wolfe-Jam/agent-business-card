@@ -1,6 +1,9 @@
 import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.1.1/+esm";
 import { parse as parseYaml } from "https://cdn.jsdelivr.net/npm/yaml@2.9.0/+esm";
-import { parseRepoInput, buildCard, fafaSnippet, toHex6 } from "./reader.js";
+import { parseRepoInput, buildCard, fafaSnippet, toHex6, apcaLc } from "./reader.js";
+
+// The business card's two faces (agent-business-card's --card), and APCA's floor for short bold text.
+const CARD_LIGHT = "#ffffff", CARD_DARK = "#0d0d0d", MIN_LC = 45;
 
 const $ = (id) => document.getElementById(id);
 const form = $("paste"), input = $("repo"), status = $("status"), frame = $("card");
@@ -50,14 +53,6 @@ async function load(ref) {
   return { card, fafaPath: fafa && typeof fafa === "object" ? fafaPath : undefined };
 }
 
-// WCAG contrast of the accent against the light card (white) and the dark card.
-function lum(hex) {
-  let h = hex.replace("#", "");
-  if (h.length === 3) h = [...h].map((c) => c + c).join("");
-  const [r, g, b] = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
 
 // ?accent=#hex → that colour · ?accent=ink → ink even if the owner declared one · none → the owner's colour, else ink.
 function chosenAccent() {
@@ -77,9 +72,10 @@ function draw() {
   inkBtn.disabled = !shown;
   // Only for a colour picked here: the owner's own declared colour is theirs to choose.
   if (accent && accent !== "ink" && /^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(accent)) {
-    const onLight = ratio(accent, "#ffffff"), onDark = ratio(accent, "#0a0a0a");
-    const faint = [onLight < 3 && `a light card (${onLight.toFixed(1)}:1)`, onDark < 3 && `a dark card (${onDark.toFixed(1)}:1)`].filter(Boolean);
-    contrast.textContent = faint.length ? `This colour is faint on ${faint.join(" and on ")}. Text in it may be hard to read there.` : "";
+    // APCA, one curve per polarity: dark text on the light card, light text on the dark one.
+    const onLight = Math.abs(apcaLc(accent, CARD_LIGHT)), onDark = Math.abs(apcaLc(accent, CARD_DARK));
+    const faint = [onLight < MIN_LC && `a light card (Lc ${Math.round(onLight)})`, onDark < MIN_LC && `a dark card (Lc ${Math.round(onDark)})`].filter(Boolean);
+    contrast.textContent = faint.length ? `This colour is faint on ${faint.join(" and on ")}. Lc ${MIN_LC} or more reads well. Text in it may be hard to read there.` : "";
   } else contrast.textContent = "";
   share.value = location.href;
   const { ref, card: c, fafaPath } = current;
