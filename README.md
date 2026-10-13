@@ -89,10 +89,19 @@ dropped, and the business card falls back to ink.
 - `escapeHtml(text)`.
 - Types `BusinessCard`, `RenderOptions` and `Theme`.
 
-## Used by
+## How it fits
 
-[mcp-context-card](https://github.com/Wolfe-Jam/mcp-context-card) prints a
-project's business card from its `AGENTS.md`, memory and identity files.
+agent-business-card only prints. It reads nothing and claims nothing it isn't
+given, so each reader decides where the fields come from:
+
+| Reader | Runs in | Reads |
+|---|---|---|
+| [mcp-context-card](https://github.com/Wolfe-Jam/mcp-context-card) (an MCP server) | Node | a project's `AGENTS.md`, memory and identity files |
+| [the page](https://wolfe-jam.github.io/agent-business-card/) ([`docs/`](docs/)) | the browser | a GitHub repo's `.fafa`, `server.json`, `package.json` and GitHub data |
+| yours | either | whatever holds your fields |
+
+To change what a business card says, change its reader. To change how every
+business card looks, change this package.
 
 ## License
 
