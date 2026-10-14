@@ -157,3 +157,18 @@ test("readRepo: reads a repo's files in trust order, claimed by its .fafa", asyn
   assert.ok(seen.includes("Bearer t"));
   await assert.rejects(readRepo({ owner: "acme", repo: "gone" }, { parseYaml, escapeHtml, fetch: fakeFetch }), /No public repo/);
 });
+
+test("a .fafa says what it is and where it's published", () => {
+  const fafa = (endpoints, cards = {}) => ({ agent: { name: "x", homepage: "https://example.com" }, endpoints, metadata: { cards } });
+  assert.equal(card({ fafa: fafa([{ protocol: "mcp", transport: "stdio", location: "x" }]) }).title, "MCP server");
+  assert.equal(card({ fafa: fafa([{ protocol: "cli", transport: "stdio", location: "x" }]) }).title, "CLI");
+  assert.equal(card({ fafa: fafa([{ protocol: "library", transport: "stdio", location: "x" }]) }).title, "Library");
+  const ext = card({ fafa: fafa([{ protocol: "vscode-extension", transport: "stdio", location: "p.x" }]), pkg: { name: "x" } });
+  assert.equal(ext.title, "VS Code extension");
+  assert.ok(!ext.tabs[0].html.includes("Package (npm)"));
+  assert.equal(card({ fafa: fafa([{ protocol: "smoke-signal", transport: "air", location: "hill" }]) }).title, "Repository");
+  // The .fafa's domain wins over the GitHub homepage; then its homepage.
+  const gh2 = { ...gh, homepage: "https://not-ours.example" };
+  assert.equal(buildCard({ ref, gh: gh2, fafa: fafa([], { domain: "ours.example" }) }, { escapeHtml }).domain, "ours.example");
+  assert.equal(buildCard({ ref, gh: gh2, fafa: fafa([]) }, { escapeHtml }).domain, "example.com");
+});

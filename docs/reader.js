@@ -72,10 +72,16 @@ export function buildCard(src, { escapeHtml }) {
   // A version must look like one: a template placeholder such as "${VERSION}" is skipped.
   const ver = (v) => { const t = str(v)?.replace(/^v(?=\d)/, ""); return t && /^\d+(\.\d+)*([-+.][0-9A-Za-z.-]+)?$/.test(t) ? t : undefined; };
   const version = ver(agent.version) ?? ver(sj.version) ?? (pkg.private ? undefined : ver(pkg.version)) ?? ver(release);
-  const kind = str(sj.name) ? "MCP server" : str(pkg.name) && !pkg.private ? "npm package" : "Repository";
+  // What it is: the owner's .fafa says first (its endpoints' protocol), then server.json, then package.json.
+  const KINDS = { mcp: "MCP server", a2a: "A2A agent", cli: "CLI", library: "Library", "vscode-extension": "VS Code extension", "github-action": "GitHub Action" };
+  const endpoints = Array.isArray(src.fafa?.endpoints) ? src.fafa.endpoints : [];
+  const fafaKind = endpoints.map((x) => KINDS[str(x?.protocol)?.toLowerCase()]).find(Boolean);
+  const npm = str(pkg.name) && !pkg.private && fafaKind !== "VS Code extension";
+  const kind = fafaKind ?? (str(sj.name) ? "MCP server" : npm ? "npm package" : "Repository");
   const license = str(agent.license) ?? str(pkg.license) ?? (gh.license?.spdx_id !== "NOASSERTION" ? str(gh.license?.spdx_id) : undefined);
-  const homepage = httpUrl(gh.homepage) ?? httpUrl(sj.websiteUrl) ?? httpUrl(pkg.homepage);
-  const domain = homepage ? new URL(homepage).host.replace(/^www\./, "") : `github.com/${ref.owner}`;
+  const homepage = httpUrl(agent.homepage) ?? httpUrl(gh.homepage) ?? httpUrl(sj.websiteUrl) ?? httpUrl(pkg.homepage);
+  const host = (u) => new URL(u).host.replace(/^www\./, "");
+  const domain = str(cards.domain) ?? (homepage ? host(homepage) : `github.com/${ref.owner}`);
 
   const chips = [
     claimed ? { text: "claimed", accent: true } : { text: "public data" },
@@ -92,7 +98,7 @@ export function buildCard(src, { escapeHtml }) {
     license && ["License", e(license)],
     homepage && ["Homepage", link(homepage, homepage.replace(/^https?:\/\//, "").replace(/\/$/, ""))],
     str(sj.name) && ["MCP Registry", `<code>${e(sj.name)}</code>`],
-    str(pkg.name) && !pkg.private && ["Package (npm)", `<code>${e(pkg.name)}</code>`],
+    npm && ["Package (npm)", `<code>${e(pkg.name)}</code>`],
     Array.isArray(gh.topics) && gh.topics.length && ["Topics", gh.topics.slice(0, 8).map((t) => `<span class="tag">${e(t)}</span>`).join(" ")],
   ].filter(Boolean);
   const aboutHtml =
