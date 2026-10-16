@@ -49,7 +49,7 @@ export function safeAccent(a?: string): string | undefined {
 
 /**
  * A picture link the card can show: https only, no user:password, at most
- * 2048 characters. Anything else is ignored and the card keeps its letter.
+ * 2048 characters. Anything else is ignored and the card keeps its monogram.
  */
 export function safeLogo(url?: string): string | undefined {
   if (!url || url.length > 2048) return undefined;
@@ -306,16 +306,16 @@ export interface BusinessCard {
   accent?: string;
   /**
    * A picture for the front's logo, as an https link (a square PNG or SVG,
-   * 256px). Drawn as an image over the letter; if it can't load, the letter
+   * 256px). Drawn as an image over the monogram; if it can't load, the monogram
    * shows. Not https = ignored.
    */
   logo?: string;
 }
 
 /**
- * The front's logo: the letter, with the picture over it when there is one.
+ * The front's logo: the monogram, with the picture over it when there is one.
  * The picture host is not told which page shows it (no referrer). If it fails
- * to load, the image removes itself and the letter shows again.
+ * to load, the image removes itself and the monogram shows again.
  */
 function logoHtml(name: string, logo: string | undefined): string {
   const letter = escapeHtml(cardInitials(name));

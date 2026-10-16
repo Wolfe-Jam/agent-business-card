@@ -1,0 +1,7 @@
+version: "1.0"
+agent:
+  name: agent-business-card
+  displayName: agent-business-card
+  version: 0.2.0
+  description: "Render a business card for an AI agent, an MCP server or a person, and print it to screen as one self-contained HTML page."
+  homepage: https://wolfe-jam.github.io/agent-business-card/
