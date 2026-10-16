@@ -1,6 +1,6 @@
 import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.1.1/+esm";
 import { parse as parseYaml } from "https://cdn.jsdelivr.net/npm/yaml@2.9.0/+esm";
-import { parseRepoInput, fafaSnippet, toHex6, apcaLc } from "./reader.js";
+import { parseRepoInput, fafaSnippet, toHex6, apcaLc, decodeFafaParam, buildFafaCard } from "./reader.js";
 import { readRepo } from "./source.js";
 
 // The business card's two faces (agent-business-card's --card), and APCA's floor for short bold text.
@@ -10,7 +10,7 @@ const $ = (id) => document.getElementById(id);
 const form = $("paste"), input = $("repo"), status = $("status"), frame = $("card");
 const picker = $("accent"), hex = $("hex"), inkBtn = $("ink"), share = $("share"), copyBtn = $("copy"), contrast = $("contrast");
 const claimText = $("claim-text"), fafaBox = $("fafa"), fafaCopy = $("copy-fafa");
-let current = null; // { ref, card, fafaPath }
+let current = null; // { ref, card, fafaPath } from a repo, or { card, fafaText } from ?fafa=
 
 const load = (ref) => readRepo(ref, { parseYaml, escapeHtml });
 
@@ -54,9 +54,16 @@ function draw() {
     contrast.textContent = faint.length ? `This colour is faint on ${faint.join(" and on ")}. Lc ${MIN_LC} or more reads well. Text in it may be hard to read there.` : "";
   } else contrast.textContent = "";
   share.value = location.href;
+  $("share-note").textContent = current.fafaText
+    ? "The link carries the .fafa itself, so the business card prints the same on every visit."
+    : "The link prints the business card live from GitHub on every visit, so it never goes stale.";
   $("badge-md").textContent = badgeMarkdown();
-  const { ref, card: c, fafaPath } = current;
-  if (fafaPath) {
+  const { ref, card: c, fafaPath, fafaText } = current;
+  if (fafaText) {
+    claimText.textContent = "Printed from the .fafa in this link. To claim it on GitHub, add this file to your repo at .well-known/fafa.";
+    fafaBox.textContent = fafaSnippet({ name: c.name, description: c.description, accent: shown });
+    fafaBox.hidden = fafaCopy.hidden = false;
+  } else if (fafaPath) {
     claimText.textContent = `Claimed. The owner's .fafa is at ${fafaPath} in github.com/${ref.owner}/${ref.repo}.`;
     fafaBox.hidden = fafaCopy.hidden = true;
   } else {
@@ -87,7 +94,22 @@ async function show(text) {
   }
 }
 
-form.addEventListener("submit", (ev) => { ev.preventDefault(); setUrl({ accent: null }); show(input.value); });
+// ?fafa=: a .fafa carried in the link, for an agent with no repo of its own.
+function showFafa(value) {
+  const text = decodeFafaParam(value);
+  if (text === null) { status.textContent = "This link's .fafa could not be read."; return; }
+  let fafa;
+  try { fafa = parseYaml(text); } catch { status.textContent = "This link's .fafa is not valid YAML."; return; }
+  try {
+    current = { card: buildFafaCard(fafa, text, { escapeHtml }), fafaText: text };
+    status.textContent = "";
+    draw();
+  } catch (err) {
+    status.textContent = err.message;
+  }
+}
+
+form.addEventListener("submit", (ev) => { ev.preventDefault(); setUrl({ accent: null, fafa: null }); show(input.value); });
 picker.addEventListener("input", () => { setUrl({ accent: picker.value }); draw(); });
 hex.addEventListener("input", () => {
   const v = toHex6(hex.value);
@@ -153,5 +175,7 @@ async function gallery() {
 }
 gallery();
 
-const start = new URLSearchParams(location.search).get("repo");
+const params = new URLSearchParams(location.search);
+const start = params.get("repo");
 if (start) { input.value = start; show(start); }
+else if (params.get("fafa")) showFafa(params.get("fafa"));

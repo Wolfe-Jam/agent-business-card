@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { escapeHtml, renderBusinessCard } from "../src/index.js";
 import { parse as parseYaml } from "yaml";
-import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6, apcaLc } from "../docs/reader.js";
+import { parseRepoInput, buildCard, oneLine, fafaSnippet, toHex6, apcaLc, encodeFafaParam, decodeFafaParam, buildFafaCard, FAFA_PARAM_MAX } from "../docs/reader.js";
 import { readRepo } from "../docs/source.js";
 
 const ref = { owner: "acme", repo: "weather" };
@@ -172,3 +172,46 @@ test("a .fafa says what it is and where it's published", () => {
   assert.equal(buildCard({ ref, gh: gh2, fafa: fafa([], { domain: "ours.example" }) }, { escapeHtml }).domain, "ours.example");
   assert.equal(buildCard({ ref, gh: gh2, fafa: fafa([]) }, { escapeHtml }).domain, "example.com");
 });
+
+test("?fafa=: encode/decode round-trips UTF-8; junk and oversize are refused", () => {
+  const text = 'version: "1.0"\nagent:\n  name: "Zoë Bot 🤖"\n';
+  const v = encodeFafaParam(text);
+  assert.match(v, /^[A-Za-z0-9_-]+$/);
+  assert.equal(decodeFafaParam(v), text);
+  assert.equal(decodeFafaParam(""), null);
+  assert.equal(decodeFafaParam("not base64!"), null);
+  assert.equal(decodeFafaParam("A".repeat(FAFA_PARAM_MAX + 1)), null);
+  assert.equal(decodeFafaParam(encodeFafaParam("x").slice(0, 1)), null);
+});
+
+test("fafa-only card: self-declared, Agent kind, nothing guessed", () => {
+  const text = fafaSnippet({ name: "Scout", description: "Finds the papers you need.", accent: "#0066cc" });
+  const c = buildFafaCard(parseYaml(text), text, { escapeHtml });
+  assert.equal(c.name, "Scout");
+  assert.equal(c.title, "Agent");
+  assert.equal(c.oneLiner, "Finds the papers you need.");
+  assert.equal(c.domain, undefined);
+  assert.deepEqual(c.chips, [{ text: "self-declared" }]);
+  assert.equal(c.accent, "#0066cc");
+  assert.deepEqual(c.tabs.map((t) => t.key), ["about", "fafa"]);
+  assert.match(c.about, /Not checked against any repo/);
+  assert.doesNotMatch(c.about + c.tabs.map((t) => t.html).join(""), /claimed|github\.com/);
+  assert.match(renderBusinessCard(c), /Scout/);
+});
+
+test("fafa-only card: endpoints set the kind; version, license, homepage come through", () => {
+  const fafa = { agent: { name: "relay", version: "v1.2.0", license: "MIT", homepage: "https://relay.example/x" }, endpoints: [{ protocol: "mcp", url: "https://relay.example/mcp" }] };
+  const c = buildFafaCard(fafa, "", { escapeHtml });
+  assert.equal(c.title, "MCP server · v1.2.0");
+  assert.equal(c.domain, "relay.example");
+  assert.deepEqual(c.chips, [{ text: "self-declared" }, { text: "MIT" }]);
+});
+
+test("fafa-only card: escapes the .fafa text; refuses no name or a long name", () => {
+  const text = 'agent:\n  name: "<b>x</b>"\n';
+  const c = buildFafaCard(parseYaml(text), text, { escapeHtml });
+  assert.doesNotMatch(c.tabs[1].html, /<b>x<\/b>/);
+  assert.throws(() => buildFafaCard({ agent: {} }, "", { escapeHtml }), /no agent name/);
+  assert.throws(() => buildFafaCard({ agent: { name: "n".repeat(101) } }, "", { escapeHtml }), /longer than 100/);
+});
+

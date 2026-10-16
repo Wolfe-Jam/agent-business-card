@@ -134,6 +134,82 @@ export function buildCard(src, { escapeHtml }) {
   };
 }
 
+// A .fafa carried in the link itself (?fafa=): base64url of the YAML text.
+// For an agent with no repo of its own, e.g. a hosted bot printing its card.
+export const FAFA_PARAM_MAX = 4096;
+
+/** .fafa YAML text → the ?fafa= value (base64url of its UTF-8 bytes). */
+export function encodeFafaParam(text) {
+  let bin = "";
+  for (const b of new TextEncoder().encode(String(text))) bin += String.fromCharCode(b);
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+/** The ?fafa= value → the .fafa YAML text, or null when it is too long or not base64url UTF-8. */
+export function decodeFafaParam(value) {
+  const s = String(value ?? "").trim();
+  if (!s || s.length > FAFA_PARAM_MAX || !/^[A-Za-z0-9_-]+$/.test(s)) return null;
+  try {
+    const bin = atob(s.replace(/-/g, "+").replace(/_/g, "/"));
+    return new TextDecoder("utf-8", { fatal: true }).decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * A business card from a .fafa alone, with no repo behind it. Every field comes
+ * from the .fafa; nothing is checked against a repo, so the card says
+ * "self-declared", never "claimed". Throws when the .fafa names no agent.
+ * @param {object} fafa  parsed .fafa YAML
+ * @param {string} text  the .fafa as given, shown on the back
+ */
+export function buildFafaCard(fafa, text, { escapeHtml }) {
+  const e = (s) => escapeHtml(String(s));
+  const agent = fafa && typeof fafa.agent === "object" && fafa.agent ? fafa.agent : {};
+  const cards = fafa?.metadata?.cards ?? {};
+  const name = str(agent.displayName) ?? str(agent.name);
+  if (!name) throw new Error("This .fafa has no agent name.");
+  if (name.length > 100) throw new Error("The agent name is longer than 100 characters.");
+  const description = str(agent.description);
+  const t = str(agent.version)?.replace(/^v(?=\d)/, "");
+  const version = t && /^\d+(\.\d+)*([-+.][0-9A-Za-z.-]+)?$/.test(t) ? t : undefined;
+  const KINDS = { mcp: "MCP server", a2a: "A2A agent" };
+  const endpoints = Array.isArray(fafa?.endpoints) ? fafa.endpoints : [];
+  const kind = endpoints.map((x) => KINDS[str(x?.protocol)?.toLowerCase()]).find(Boolean) ?? "Agent";
+  const license = str(agent.license);
+  const homepage = httpUrl(agent.homepage);
+  const domain = str(cards.domain) ?? (homepage ? new URL(homepage).host.replace(/^www\./, "") : undefined);
+
+  const link = (href, txt) => `<a href="${e(href)}" target="_blank" rel="noopener">${e(txt)}</a>`;
+  const rows = [
+    str(agent.id) && ["Agent ID", `<code>${e(agent.id)}</code>`],
+    str(agent.vendor) && ["Publisher", e(agent.vendor)],
+    version && ["Version", `v${e(version)}`],
+    license && ["License", e(license)],
+    homepage && ["Homepage", link(homepage, homepage.replace(/^https?:\/\//, "").replace(/\/$/, ""))],
+  ].filter(Boolean);
+  const aboutHtml =
+    (description ? `<p class="lead">${e(description)}</p>` : `<p class="none">No description in the .fafa yet.</p>`) +
+    (rows.length ? `<table class="kv"><tbody>${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join("")}</tbody></table>` : "");
+  const fafaHtml = `<div class="md"><pre><code>${e(text)}</code></pre></div>
+  <p class="fetch">Every field on this business card comes from this .fafa. It was not checked against any repo.</p>`;
+
+  return {
+    name,
+    title: version ? `${kind} · v${version}` : kind,
+    ...(description ? { oneLiner: oneLine(description), description } : {}),
+    ...(domain ? { domain } : {}),
+    chips: [{ text: "self-declared" }, ...(license ? [{ text: license }] : [])],
+    tabs: [
+      { key: "about", label: "About", heading: "About", html: aboutHtml },
+      { key: "fafa", label: ".fafa", heading: "The .fafa", html: fafaHtml },
+    ],
+    about: `<p class="whatis-head">Business Cards for Agents</p><p>Printed from the <code>.fafa</code> in this link. Not checked against any repo.</p><p class="whatis-foot">Printed by <code>agent-business-card</code></p>`,
+    ...(str(cards.accent) ? { accent: str(cards.accent) } : {}),
+  };
+}
+
 /**
  * The .fafa an owner adds at .well-known/fafa to claim the business card. JSON
  * strings are valid YAML double-quoted scalars, so every value is quoted safely.
