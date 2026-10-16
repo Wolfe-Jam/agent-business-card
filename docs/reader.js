@@ -131,6 +131,7 @@ export function buildCard(src, { escapeHtml }) {
     ],
     about,
     ...(str(cards.accent) ? { accent: str(cards.accent) } : {}),
+    ...(str(cards.icon) ? { logo: str(cards.icon) } : {}), // the renderer draws https links only
   };
 }
 
@@ -207,19 +208,23 @@ export function buildFafaCard(fafa, text, { escapeHtml }) {
     ],
     about: `<p class="whatis-head">Business Cards for Agents</p><p>Printed from the <code>.fafa</code> in this link. Not checked against any repo.</p><p class="whatis-foot">Printed by <code>agent-business-card</code></p>`,
     ...(str(cards.accent) ? { accent: str(cards.accent) } : {}),
+    ...(str(cards.icon) ? { logo: str(cards.icon) } : {}), // the renderer draws https links only
   };
 }
 
 /**
  * The .fafa an owner adds at .well-known/fafa to claim the business card. JSON
  * strings are valid YAML double-quoted scalars, so every value is quoted safely.
- * No colour means no metadata block: the business card prints in ink.
+ * No colour means no metadata block: the business card prints in ink. An icon
+ * is a picture link for the logo (metadata.cards.icon).
  */
-export function fafaSnippet({ name, description, accent }) {
+export function fafaSnippet({ name, description, accent, icon }) {
   const q = (v) => JSON.stringify(String(v));
   const lines = ['version: "1.0"', "agent:", `  name: ${q(name)}`];
   if (description) lines.push(`  description: ${q(description)}`);
-  if (accent) lines.push("metadata:", "  cards:", `    accent: ${q(accent)}`);
+  if (accent || icon) lines.push("metadata:", "  cards:");
+  if (accent) lines.push(`    accent: ${q(accent)}`);
+  if (icon) lines.push(`    icon: ${q(icon)}`);
   return lines.join("\n") + "\n";
 }
 
