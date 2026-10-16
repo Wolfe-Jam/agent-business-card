@@ -1,4 +1,4 @@
-import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.1.1/+esm";
+import { renderBusinessCard, escapeHtml, safeAccent } from "https://cdn.jsdelivr.net/npm/agent-business-card@0.2.0/+esm";
 import { parse as parseYaml } from "https://cdn.jsdelivr.net/npm/yaml@2.9.0/+esm";
 import { parseRepoInput, fafaSnippet, toHex6, apcaLc, decodeFafaParam, buildFafaCard } from "./reader.js";
 import { readRepo } from "./source.js";
@@ -61,14 +61,14 @@ function draw() {
   const { ref, card: c, fafaPath, fafaText } = current;
   if (fafaText) {
     claimText.textContent = "Printed from the .fafa in this link. To claim it on GitHub, add this file to your repo at .well-known/fafa.";
-    fafaBox.textContent = fafaSnippet({ name: c.name, description: c.description, accent: shown });
+    fafaBox.textContent = fafaSnippet({ name: c.name, description: c.description, accent: shown, icon: c.logo });
     fafaBox.hidden = fafaCopy.hidden = false;
   } else if (fafaPath) {
     claimText.textContent = `Claimed. The owner's .fafa is at ${fafaPath} in github.com/${ref.owner}/${ref.repo}.`;
     fafaBox.hidden = fafaCopy.hidden = true;
   } else {
     claimText.textContent = "Is this yours? Add this file to the repo at .well-known/fafa and the business card shows as claimed. Pick a colour above and it goes in the file too.";
-    fafaBox.textContent = fafaSnippet({ name: c.name, description: c.description, accent: shown });
+    fafaBox.textContent = fafaSnippet({ name: c.name, description: c.description, accent: shown, icon: c.logo });
     fafaBox.hidden = fafaCopy.hidden = false;
   }
   $("keep").hidden = false;

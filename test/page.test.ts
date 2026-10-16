@@ -215,3 +215,21 @@ test("fafa-only card: escapes the .fafa text; refuses no name or a long name", (
   assert.throws(() => buildFafaCard({ agent: { name: "n".repeat(101) } }, "", { escapeHtml }), /longer than 100/);
 });
 
+
+test("icon: metadata.cards.icon becomes the card's logo, in both kinds of card", () => {
+  const text = fafaSnippet({ name: "pc-ai", description: "Sales engineer.", icon: "https://faf.one/cards/avatars/pc-ai.png" });
+  assert.equal(parseYaml(text).metadata.cards.icon, "https://faf.one/cards/avatars/pc-ai.png");
+  assert.equal(parseYaml(text).metadata.cards.accent, undefined);
+  const f = buildFafaCard(parseYaml(text), text, { escapeHtml });
+  assert.equal(f.logo, "https://faf.one/cards/avatars/pc-ai.png");
+  assert.match(renderBusinessCard(f), /<img src="https:\/\/faf\.one\/cards\/avatars\/pc-ai\.png"/);
+  const r = card({ fafa: { agent: { name: "w" }, metadata: { cards: { icon: "https://example.com/w.png" } } } });
+  assert.equal(r.logo, "https://example.com/w.png");
+  assert.equal(card({}).logo, undefined);
+});
+
+test("icon: an unsafe link reaches the card but the renderer ignores it", () => {
+  const text = fafaSnippet({ name: "x", icon: "javascript:alert(1)" });
+  const html = renderBusinessCard(buildFafaCard(parseYaml(text), text, { escapeHtml }));
+  assert.doesNotMatch(html, /<img\b/);
+});
