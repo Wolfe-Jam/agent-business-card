@@ -10,7 +10,8 @@ detail, in tabs you choose. It comes in light, dark or auto, landscape or
 portrait, and in your colour or plain ink.
 
 - **One file.** Inline CSS, no external fonts, styles or images. Open it,
-  screenshot it, attach it to a PR.
+  screenshot it, attach it to a PR. The one exception is a `logo` picture
+  link, and only if you give the card one.
 - **Works without JavaScript.** The flip, the tabs and the toggles are CSS. The
   one small inline script only adds conveniences (expand all, print).
 - **Runs anywhere.** No Node APIs and no dependencies, so it renders in Node and
@@ -62,8 +63,9 @@ const html = renderBusinessCard({
 | `tabs` | The back, in order. `key` is cleaned to `[a-z0-9-]`, and `html` is markup you've already made safe. |
 | `about` | The (i) panel, as markup you've already made safe. |
 | `accent` | The owner's colour, as a hex. Optional. |
+| `logo` | A picture for the logo, as an `https` link: a square PNG (256 × 256, transparent background) or SVG. It's drawn over the letter, and if it can't load, the letter shows. The picture's host isn't told which page shows it. Anything that isn't `https` is ignored. Optional. |
 
-Text fields are escaped. `tabs[].html` and `about` are inserted as given, so
+Text fields are escaped, and `logo` is checked with `safeLogo`. `tabs[].html` and `about` are inserted as given, so
 build them from trusted or escaped content. `escapeHtml` is exported for that.
 
 ### Options
