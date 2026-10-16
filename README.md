@@ -21,10 +21,10 @@ portrait, and in your colour or plain ink.
 
 ## What's new in v0.2.0 — The Headshot Edition
 
-A business card can now show a picture: give it an https link and it's drawn in the logo spot, with the letter as a fallback.
+A business card can now show a picture: give it an https link and it's drawn in the logo spot, with the monogram as a fallback.
 
-- **`logo`** on the business card: any image, as an `https` link. It sits over the letter in the round logo spot.
-- **If it can't load, the letter shows.** The picture's host isn't told which page shows it, and anything that isn't `https` is ignored (`safeLogo`).
+- **`logo`** on the business card: any image, as an `https` link. It sits over the monogram in the round logo spot.
+- **If it can't load, the monogram shows.** The picture's host isn't told which page shows it, and anything that isn't `https` is ignored (`safeLogo`).
 
 ## Print one now
 
@@ -62,7 +62,7 @@ const html = renderBusinessCard({
 
 | Field | What it is |
 |---|---|
-| `name` | The name on the front. Its first letter is the logo, with a second letter only when it's obvious (`github` → GH, `TypeScript` → TS). Words like "mcp", "server" or "agent" are skipped. |
+| `name` | The name on the front. Its first letter is the logo (the monogram), with a second letter only when it's obvious (`github` → GH, `TypeScript` → TS). Words like "mcp", "server" or "agent" are skipped. |
 | `title` | What it is: "MCP server · v1.2.0", "A2A agent", a person's role. Optional. |
 | `oneLiner` | One sentence about it. Optional. |
 | `domain` | Shown bottom-left on the front, such as the publisher's domain. Optional. |
@@ -70,7 +70,7 @@ const html = renderBusinessCard({
 | `tabs` | The back, in order. `key` is cleaned to `[a-z0-9-]`, and `html` is markup you've already made safe. |
 | `about` | The (i) panel, as markup you've already made safe. |
 | `accent` | The owner's colour, as a hex. Optional. |
-| `logo` | A picture for the logo, as an `https` link. Any image works; a square PNG (256 × 256, transparent background) or an SVG looks best. It's drawn over the letter, and if it can't load, the letter shows. The picture's host isn't told which page shows it. Anything that isn't `https` is ignored. Optional. |
+| `logo` | A picture for the logo, as an `https` link. Any image works; a square PNG (256 × 256, transparent background) or an SVG looks best. It's drawn over the monogram, and if it can't load, the monogram shows. The picture's host isn't told which page shows it. Anything that isn't `https` is ignored. Optional. |
 
 Text fields are escaped, and `logo` is checked with `safeLogo`. `tabs[].html` and `about` are inserted as given, so
 build them from trusted or escaped content. `escapeHtml` is exported for that.
