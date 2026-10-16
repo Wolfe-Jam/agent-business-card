@@ -4,8 +4,9 @@
  * Front: a monogram logo, the name, a title and a one-liner. Flip it for the
  * back's tabs. Light / dark / auto, landscape / portrait, a colour or ink.
  * Flip, tabs and toggles are CSS (checkbox and radio inputs); the one inline
- * script is a progressive enhancement. No external fonts, styles or images,
- * no Node APIs: it runs in Node and in the browser alike.
+ * script is a progressive enhancement. No external fonts, styles or images
+ * (the one exception: a card's own `logo` picture link, if it has one), no
+ * Node APIs: it runs in Node and in the browser alike.
  *
  * The card is data (`BusinessCard`); where its facts come from is the
  * reader's job: a project's files, an A2A Agent Card, an MCP Server Card,
@@ -44,6 +45,20 @@ const ACCENT_OK = /^#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3}(?:[0-9a-fA-F]{2})?)?$/;
 /** A valid hex colour, or undefined. Nothing else ever reaches the stylesheet. */
 export function safeAccent(a?: string): string | undefined {
   return a && ACCENT_OK.test(a) ? a : undefined;
+}
+
+/**
+ * A picture link the card can show: https only, no user:password, at most
+ * 2048 characters. Anything else is ignored and the card keeps its letter.
+ */
+export function safeLogo(url?: string): string | undefined {
+  if (!url || url.length > 2048) return undefined;
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" && !u.username && !u.password ? u.href : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 /*
@@ -128,6 +143,8 @@ h1{margin:0;font-size:2.1rem;line-height:1.15;letter-spacing:-.025em}
   color:#fff;font-weight:800;font-size:2rem;letter-spacing:-.02em;line-height:1;
   background:radial-gradient(circle at 30% 25%,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent) 45%,color-mix(in srgb,var(--accent) 50%,#000));
   box-shadow:0 0 0 3px var(--card),0 0 0 4px color-mix(in srgb,var(--accent) 45%,transparent),0 6px 20px color-mix(in srgb,var(--accent) 30%,transparent)}
+.logo.pic{color:transparent;background:var(--card)}
+.logo img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
 .front .id{margin-top:70px}
 .corner.br{bottom:16px;right:16px}
 .flipbtn{position:absolute;right:18px;bottom:16px;z-index:4;cursor:pointer;width:42px;height:42px;border-radius:50%;
@@ -287,6 +304,23 @@ export interface BusinessCard {
   about: string;
   /** The owner's colour, a hex. None = ink (black or white). */
   accent?: string;
+  /**
+   * A picture for the front's logo, as an https link (a square PNG or SVG,
+   * 256px). Drawn as an image over the letter; if it can't load, the letter
+   * shows. Not https = ignored.
+   */
+  logo?: string;
+}
+
+/**
+ * The front's logo: the letter, with the picture over it when there is one.
+ * The picture host is not told which page shows it (no referrer). If it fails
+ * to load, the image removes itself and the letter shows again.
+ */
+function logoHtml(name: string, logo: string | undefined): string {
+  const letter = escapeHtml(cardInitials(name));
+  if (!logo) return `<div class="logo" aria-hidden="true">${letter}</div>`;
+  return `<div class="logo pic" aria-hidden="true">${letter}<img src="${escapeHtml(logo)}" alt="" referrerpolicy="no-referrer" decoding="async" onerror="this.parentNode.classList.remove('pic');this.remove()"></div>`;
 }
 
 /** Draw any business card as one self-contained HTML page. */
@@ -341,7 +375,7 @@ export function renderBusinessCard(card: BusinessCard, opts: RenderOptions = {})
   <main class="bcard">
     <div class="faces">
       <section class="face front">
-        <div class="logo" aria-hidden="true">${escapeHtml(cardInitials(name))}</div>
+        ${logoHtml(name, safeLogo(card.logo))}
         ${WHATIS}
         <div class="id">
           <h1>${escapeHtml(name)}</h1>

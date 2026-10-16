@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { cardInitials, escapeHtml, renderBusinessCard, safeAccent, type BusinessCard } from "../src/index.js";
+import { cardInitials, escapeHtml, renderBusinessCard, safeAccent, safeLogo, type BusinessCard } from "../src/index.js";
 
 const card = (over: Partial<BusinessCard> = {}): BusinessCard => ({
   name: "weather-agent",
@@ -106,4 +106,31 @@ test("expanded: both faces flat, for print and screenshots", () => {
 
 test("links on the business card take its ink, not the browser's default blue", () => {
   assert.match(renderBusinessCard(card()), /\.bcard a\{color:var\(--fg\)/);
+});
+
+test("safeLogo: https links only", () => {
+  assert.equal(safeLogo("https://faf.one/cards/avatars/jam.png"), "https://faf.one/cards/avatars/jam.png");
+  assert.equal(safeLogo("http://faf.one/a.png"), undefined);
+  assert.equal(safeLogo("javascript:alert(1)"), undefined);
+  assert.equal(safeLogo("data:image/svg+xml,<svg/>"), undefined);
+  assert.equal(safeLogo("https://user:pw@faf.one/a.png"), undefined);
+  assert.equal(safeLogo("/cards/a.png"), undefined);
+  assert.equal(safeLogo(`https://faf.one/${"a".repeat(2048)}.png`), undefined);
+  assert.equal(safeLogo(undefined), undefined);
+  assert.equal(safeLogo('https://x.test/a".png'), "https://x.test/a%22.png");
+});
+
+test("logo picture: drawn over the letter, no referrer, falls back to the letter", () => {
+  const html = renderBusinessCard(card({ logo: "https://faf.one/cards/avatars/jam.png" }));
+  assert.match(html, /<div class="logo pic" aria-hidden="true">W<img src="https:\/\/faf\.one\/cards\/avatars\/jam\.png" alt="" referrerpolicy="no-referrer"/);
+  assert.match(html, /onerror="this\.parentNode\.classList\.remove\('pic'\);this\.remove\(\)"/);
+  assert.equal(html.match(/<img\b/g)?.length, 1, "the logo is the only image");
+});
+
+test("logo picture: an unsafe link is ignored and the letter stays", () => {
+  for (const logo of ["javascript:alert(1)", "http://faf.one/a.png", '" onload="alert(1)']) {
+    const html = renderBusinessCard(card({ logo }));
+    assert.match(html, /<div class="logo" aria-hidden="true">W<\/div>/);
+    assert.ok(!/<img\b/.test(html), logo);
+  }
 });
