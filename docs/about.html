@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why give your Bot a business card</title>
+<meta name="description" content="Your Bot already does real work. Its card says who it is and what it does: one link anyone can open, and any AI can read.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wolfe-jam.github.io/agent-business-card/about.html">
+<meta property="og:title" content="Why give your Bot a business card">
+<meta property="og:description" content="One link anyone can open, and any AI can read.">
+<meta property="og:image" content="https://wolfe-jam.github.io/agent-business-card/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#fafaf7;--fg:#111;--muted:#5d6168;--line:#dcdcd6;--field:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0d0e10;--fg:#f2f2ee;--muted:#9a9ea6;--line:#2c2e33;--field:#17181b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 -apple-system,"Helvetica Neue",Inter,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:48px 16px 64px}
+a{color:inherit}
+h1{font-size:clamp(28px,6vw,40px);letter-spacing:-.02em;line-height:1.1;margin:0 0 12px}
+.lede{font-size:clamp(18px,3.4vw,21px);line-height:1.45;margin:0 0 24px}
+.facts{list-style:none;padding:0;margin:0 0 24px;border-top:1.5px solid var(--line)}
+.facts li{padding:12px 0;border-bottom:1.5px solid var(--line)}
+.facts b{display:block}
+.facts span{color:var(--muted);font-size:15px}
+code{font:14px ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 48px}
+.actions.end{margin:28px 0 0}
+figure{margin:-28px 0 48px}figure video{display:block;width:100%;height:auto;border-radius:14px;background:#000}
+figcaption{color:var(--muted);font-size:14px;margin:8px 0 0}
+.btn{display:inline-block;padding:12px 18px;font-weight:700;border-radius:10px;border:1.5px solid var(--fg);background:var(--fg);color:var(--bg);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--fg)}
+h2{font-size:20px;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px}
+ol.why{list-style:none;counter-reset:w;padding:0;margin:0}
+ol.why li{counter-increment:w;display:grid;grid-template-columns:2.2em 1fr;gap:0 10px;align-items:baseline;padding:14px 0;border-bottom:1.5px solid var(--line)}
+ol.why li::before{content:counter(w);font-weight:700;color:var(--muted)}
+ol.why b{display:block}
+ol.why p{margin:2px 0 0;color:var(--muted);font-size:15px}
+ol.why li:target{background:var(--field)}
+footer{margin:40px 0 0;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<h1>Why give your Bot a business card?</h1>
+<p class="lede">Your Bot already does real work. Its card says who it is and what it does: one link anyone can open, and any AI can read.</p>
+
+<ul class="facts">
+  <li><b>Make it in one message.</b><span>Add <code>https://mcpaas.live/mcp</code> as a connector, then ask your Bot for its business card. Works in Grok and any MCP client.</span></li>
+  <li><b>Give it a face.</b><span>Drop a picture at <a href="https://mcpaas.live/cards/picture">mcpaas.live/cards/picture</a> and paste the prompt to your Bot.</span></li>
+  <li><b>An open, registered format.</b><span>Every card prints from a <code>.fafa</code>, the agent file: <a href="https://faf.one/links#iana">IANA-registered</a> as <code>application/vnd.fafa+yaml</code> (June 2026).</span></li>
+</ul>
+
+<div class="actions">
+  <a class="btn" href="https://mcpaas.live/cards/picture">Add a picture</a>
+  <a class="btn ghost" href="./">See a card</a>
+  <a class="btn ghost" id="watch" href="#film">Watch the video</a>
+</div>
+
+<figure id="film" hidden>
+  <video id="vid" src="give-your-bot-a-card.mp4" poster="give-your-bot-a-card.jpg" controls muted playsinline preload="none" width="1080" height="1080"></video>
+  <figcaption>53 seconds, silent. <a href="give-your-bot-a-card.mp4" download>Download the video</a> (MP4, 2 MB)</figcaption>
+</figure>
+
+<h2>Why, in more detail</h2>
+<ol class="why">
+  <li id="agent"><div><b>Your Bot is an agent, with a card.</b><p>The card prints from its <code>.fafa</code>: its name, what it does, its colour, its face.</p></div></li>
+  <li id="edge"><div><b>It's wired into the edge.</b><p>mcpaas runs on Cloudflare, at 300+ edge locations.</p></div></li>
+  <li id="tools"><div><b>It gets 20 MCP tools.</b><p>Add the connector and your Bot can use all 20, no sign-in: business cards, context scoring, search and more.</p></div></li>
+  <li id="link"><div><b>One link says who it is.</b><p>Paste it on X, in Discord, in a README or an email.</p></div></li>
+  <li id="nothing"><div><b>Nothing to sign up for.</b><p>The card lives in its link. Only the picture, if you add one, is hosted.</p></div></li>
+  <li id="face"><div><b>It has a face.</b><p>Drop a picture, get a link. <a href="https://mcpaas.live/cards/picture">mcpaas.live/cards/picture</a></p></div></li>
+  <li id="claim"><div><b>Claim it, and it's checked.</b><p>Put the <code>.fafa</code> in your GitHub repo at <code>.well-known/fafa</code>, and the repo's card shows as claimed.</p></div></li>
+  <li id="readable"><div><b>People and AIs can both read it.</b><p>The back of the card shows the <code>.fafa</code> itself, plain YAML.</p></div></li>
+  <li id="any-client"><div><b>It isn't locked to Grok.</b><p>The same connector works in any MCP client.</p></div></li>
+  <li id="team"><div><b>A team gets a roster.</b><p>Every Bot its own card, like JAM's team.</p></div></li>
+  <li id="format"><div><b>The format is open and registered.</b><p><code>application/vnd.fafa+yaml</code>, IANA, June 2026. <a href="https://faf.one/links#iana">faf.one/links</a></p></div></li>
+  <li id="mit"><div><b>The card is open source.</b><p>The renderer is MIT. <a href="https://github.com/Wolfe-Jam/agent-business-card">agent-business-card</a></p></div></li>
+  <li id="looks"><div><b>It looks the part.</b><p>Light or dark, flip it over, your colour, your face.</p></div></li>
+</ol>
+
+<div class="actions end"><a class="btn share-x" href="#">Share on X</a></div>
+
+<footer>Printed by <a href="https://github.com/Wolfe-Jam/agent-business-card">agent-business-card</a> (MIT) · <a href="./">Get your business card</a></footer>
+</main>
+<script>
+// Share on X: web intent (no API, no sign-in here; the person edits before posting).
+const PAGE = 'https://wolfe-jam.github.io/agent-business-card/about.html';
+const intent = (text, url) => 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url);
+document.getElementById('watch').addEventListener('click', (e) => {
+  e.preventDefault();
+  const f = document.getElementById('film'), v = document.getElementById('vid');
+  f.hidden = false; f.scrollIntoView({ behavior: 'smooth', block: 'center' }); v.play().catch(() => {});
+});
+for (const a of document.querySelectorAll('.share-x')) { a.href = intent('Why give your Bot a business card?', PAGE); a.target = '_blank'; a.rel = 'noopener'; }
+</script>
+</body>
+</html>
