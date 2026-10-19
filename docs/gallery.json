@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-13",
+  "updated": "2026-10-19",
   "cards": [
     {
       "repo": "aaif-goose/goose",
       "claimed": false,
       "card": {
         "name": "goose",
-        "title": "Repository · v1.54.0",
+        "title": "Repository · v1.55.0",
         "oneLiner": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "domain": "goose-docs.ai",
@@ -23,7 +23,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.54.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.55.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -216,7 +216,7 @@
       "claimed": false,
       "card": {
         "name": "react",
-        "title": "Repository · v19.3.0",
+        "title": "Repository · v19.3.1",
         "oneLiner": "The library for web and native user interfaces.",
         "description": "The library for web and native user interfaces.",
         "domain": "react.dev",
@@ -233,7 +233,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">The library for web and native user interfaces.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/react/react\" target=\"_blank\" rel=\"noopener\">react/react</a></td></tr><tr><th>Version</th><td>v19.3.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://react.dev/\" target=\"_blank\" rel=\"noopener\">react.dev</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">declarative</span> <span class=\"tag\">frontend</span> <span class=\"tag\">javascript</span> <span class=\"tag\">library</span> <span class=\"tag\">react</span> <span class=\"tag\">ui</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">The library for web and native user interfaces.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/react/react\" target=\"_blank\" rel=\"noopener\">react/react</a></td></tr><tr><th>Version</th><td>v19.3.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://react.dev/\" target=\"_blank\" rel=\"noopener\">react.dev</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">declarative</span> <span class=\"tag\">frontend</span> <span class=\"tag\">javascript</span> <span class=\"tag\">library</span> <span class=\"tag\">react</span> <span class=\"tag\">ui</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -467,7 +467,7 @@
       "claimed": true,
       "card": {
         "name": ".FAF Context",
-        "title": "MCP server · v4.0.0",
+        "title": "MCP server · v4.0.1",
         "oneLiner": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
         "description": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
         "domain": "faf.one",
@@ -488,7 +488,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">.FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:faf-mcp</code></td></tr><tr><th>Version</th><td>v4.0.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">.FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:faf-mcp</code></td></tr><tr><th>Version</th><td>v4.0.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -509,7 +509,7 @@
         "title": "MCP server · v2.1.0",
         "oneLiner": "The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.",
         "description": "The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.",
-        "domain": "faf.one",
+        "domain": "grok.faf.one",
         "chips": [
           {
             "text": "claimed",
@@ -527,7 +527,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/grok-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/grok-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:grok.faf.one:agent:grok-faf-mcp</code></td></tr><tr><th>Version</th><td>v2.1.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/grok-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>grok-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-context-format</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">ai-tools</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/grok-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/grok-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:grok.faf.one:agent:grok-faf-mcp</code></td></tr><tr><th>Version</th><td>v2.1.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://grok.faf.one/\" target=\"_blank\" rel=\"noopener\">grok.faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/grok-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>grok-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-context-format</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">ai-tools</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -544,7 +544,7 @@
       "claimed": true,
       "card": {
         "name": "Gemini FAF",
-        "title": "MCP server · v3.1.0",
+        "title": "MCP server · v3.1.1",
         "oneLiner": "Persistent project context for Google Gemini, from your IANA-registered project.faf.",
         "description": "Persistent project context for Google Gemini, from your IANA-registered project.faf.",
         "domain": "faf.one",
@@ -565,7 +565,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Persistent project context for Google Gemini, from your IANA-registered project.faf.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/gemini-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/gemini-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:gemini-faf-mcp</code></td></tr><tr><th>Version</th><td>v3.1.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/gemini-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">context-engineering</span> <span class=\"tag\">crates-io</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span> <span class=\"tag\">gemini</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Persistent project context for Google Gemini, from your IANA-registered project.faf.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/gemini-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/gemini-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:gemini-faf-mcp</code></td></tr><tr><th>Version</th><td>v3.1.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/gemini-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">context-engineering</span> <span class=\"tag\">crates-io</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span> <span class=\"tag\">gemini</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
