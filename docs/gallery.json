@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "cards": [
     {
       "repo": "aaif-goose/goose",
       "claimed": false,
       "card": {
         "name": "goose",
-        "title": "Repository · v1.55.0",
+        "title": "Repository · v1.56.0",
         "oneLiner": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "domain": "goose-docs.ai",
@@ -23,7 +23,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.55.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.56.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -40,7 +40,7 @@
       "claimed": false,
       "card": {
         "name": "GitHub",
-        "title": "MCP server · v2.0.2",
+        "title": "MCP server · v2.0.3",
         "oneLiner": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
         "description": "Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.",
         "domain": "github.com/github",
@@ -60,7 +60,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/github/github-mcp-server\" target=\"_blank\" rel=\"noopener\">github/github-mcp-server</a></td></tr><tr><th>Version</th><td>v2.0.2</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>MCP Registry</th><td><code>io.github.github/github-mcp-server</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">github</span> <span class=\"tag\">mcp</span> <span class=\"tag\">mcp-server</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Connect AI assistants to GitHub - manage repos, issues, PRs, and workflows through natural language.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/github/github-mcp-server\" target=\"_blank\" rel=\"noopener\">github/github-mcp-server</a></td></tr><tr><th>Version</th><td>v2.0.3</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>MCP Registry</th><td><code>io.github.github/github-mcp-server</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">github</span> <span class=\"tag\">mcp</span> <span class=\"tag\">mcp-server</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -114,7 +114,7 @@
       "claimed": false,
       "card": {
         "name": "typescript-sdk",
-        "title": "Repository · v2.3.1",
+        "title": "Repository · v2.4.0",
         "oneLiner": "Model Context Protocol implementation for TypeScript",
         "description": "Model Context Protocol implementation for TypeScript",
         "domain": "ts.sdk.modelcontextprotocol.io",
@@ -131,7 +131,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Model Context Protocol implementation for TypeScript</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/modelcontextprotocol/typescript-sdk\" target=\"_blank\" rel=\"noopener\">modelcontextprotocol/typescript-sdk</a></td></tr><tr><th>Version</th><td>v2.3.1</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://ts.sdk.modelcontextprotocol.io/v2\" target=\"_blank\" rel=\"noopener\">ts.sdk.modelcontextprotocol.io/v2</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">mcp</span> <span class=\"tag\">mcp-client</span> <span class=\"tag\">mcp-server</span> <span class=\"tag\">typescript</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Model Context Protocol implementation for TypeScript</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/modelcontextprotocol/typescript-sdk\" target=\"_blank\" rel=\"noopener\">modelcontextprotocol/typescript-sdk</a></td></tr><tr><th>Version</th><td>v2.4.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://ts.sdk.modelcontextprotocol.io/v2\" target=\"_blank\" rel=\"noopener\">ts.sdk.modelcontextprotocol.io/v2</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">mcp</span> <span class=\"tag\">mcp-client</span> <span class=\"tag\">mcp-server</span> <span class=\"tag\">typescript</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
