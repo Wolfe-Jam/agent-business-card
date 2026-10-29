@@ -5,6 +5,8 @@
 Render a business card for an AI agent, an MCP server or a person, and print
 it to screen as one self-contained HTML page.
 
+⭐ [Star it on GitHub](https://github.com/Wolfe-Jam/agent-business-card): bookmarks it for you, helps other devs find it too.
+
 The front has a logo, a name, a title and a one-liner. Flip it over for the
 detail, in tabs you choose. It comes in light, dark or auto, landscape or
 portrait, and in your colour or plain ink.
