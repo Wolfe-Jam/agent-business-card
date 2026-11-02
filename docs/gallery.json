@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-26",
+  "updated": "2026-11-02",
   "cards": [
     {
       "repo": "aaif-goose/goose",
       "claimed": false,
       "card": {
         "name": "goose",
-        "title": "Repository · v1.56.0",
+        "title": "Repository · v1.57.0",
         "oneLiner": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "description": "an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM",
         "domain": "goose-docs.ai",
@@ -23,7 +23,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.56.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/aaif-goose/goose\" target=\"_blank\" rel=\"noopener\">aaif-goose/goose</a></td></tr><tr><th>Version</th><td>v1.57.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://goose-docs.ai/\" target=\"_blank\" rel=\"noopener\">goose-docs.ai</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">acp</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-agents</span> <span class=\"tag\">mcp</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -77,7 +77,7 @@
       "claimed": false,
       "card": {
         "name": "playwright-mcp",
-        "title": "MCP server · v0.0.83",
+        "title": "MCP server · v0.0.84",
         "oneLiner": "Playwright Tools for MCP",
         "description": "Playwright Tools for MCP",
         "domain": "npmjs.com",
@@ -97,7 +97,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Playwright Tools for MCP</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/microsoft/playwright-mcp\" target=\"_blank\" rel=\"noopener\">microsoft/playwright-mcp</a></td></tr><tr><th>Version</th><td>v0.0.83</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://www.npmjs.com/package/@playwright/mcp\" target=\"_blank\" rel=\"noopener\">www.npmjs.com/package/@playwright/mcp</a></td></tr><tr><th>MCP Registry</th><td><code>io.github.microsoft/playwright-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>@playwright/mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">mcp</span> <span class=\"tag\">playwright</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Playwright Tools for MCP</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/microsoft/playwright-mcp\" target=\"_blank\" rel=\"noopener\">microsoft/playwright-mcp</a></td></tr><tr><th>Version</th><td>v0.0.84</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://www.npmjs.com/package/@playwright/mcp\" target=\"_blank\" rel=\"noopener\">www.npmjs.com/package/@playwright/mcp</a></td></tr><tr><th>MCP Registry</th><td><code>io.github.microsoft/playwright-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>@playwright/mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">mcp</span> <span class=\"tag\">playwright</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -148,7 +148,7 @@
       "claimed": false,
       "card": {
         "name": "agentgateway",
-        "title": "Repository · v1.6.0",
+        "title": "Repository · v1.7.0",
         "oneLiner": "Next Generation Agentic Proxy for AI Agents and MCP servers",
         "description": "Next Generation Agentic Proxy for AI Agents and MCP servers",
         "domain": "agentgateway.dev",
@@ -165,7 +165,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Next Generation Agentic Proxy for AI Agents and MCP servers</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/agentgateway/agentgateway\" target=\"_blank\" rel=\"noopener\">agentgateway/agentgateway</a></td></tr><tr><th>Version</th><td>v1.6.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://agentgateway.dev/\" target=\"_blank\" rel=\"noopener\">agentgateway.dev</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-gateway</span> <span class=\"tag\">api-gateway</span> <span class=\"tag\">gateway-api</span> <span class=\"tag\">kubernetes</span> <span class=\"tag\">mcp</span> <span class=\"tag\">mcp-gateway</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Next Generation Agentic Proxy for AI Agents and MCP servers</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/agentgateway/agentgateway\" target=\"_blank\" rel=\"noopener\">agentgateway/agentgateway</a></td></tr><tr><th>Version</th><td>v1.7.0</td></tr><tr><th>License</th><td>Apache-2.0</td></tr><tr><th>Homepage</th><td><a href=\"https://agentgateway.dev/\" target=\"_blank\" rel=\"noopener\">agentgateway.dev</a></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-gateway</span> <span class=\"tag\">api-gateway</span> <span class=\"tag\">gateway-api</span> <span class=\"tag\">kubernetes</span> <span class=\"tag\">mcp</span> <span class=\"tag\">mcp-gateway</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -428,7 +428,7 @@
       "claimed": true,
       "card": {
         "name": "claude-faf-mcp",
-        "title": "MCP server · v7.0.1",
+        "title": "MCP server · v7.1.0",
         "oneLiner": "Persistent project context for Claude — define once, never re-explain.",
         "description": "Persistent project context for Claude — define once, never re-explain. The FAF Context MCP for Claude Desktop and Claude Code.",
         "domain": "faf.one",
@@ -449,7 +449,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">Persistent project context for Claude — define once, never re-explain. The FAF Context MCP for Claude Desktop and Claude Code.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/claude-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>did:web:faf.one:claude-faf-mcp</code></td></tr><tr><th>Publisher</th><td>WolfeJAM</td></tr><tr><th>Version</th><td>v7.0.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/claude-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>claude-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">anthropic</span> <span class=\"tag\">claude</span> <span class=\"tag\">claude-ai</span> <span class=\"tag\">claude-desktop</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">Persistent project context for Claude — define once, never re-explain. The FAF Context MCP for Claude Desktop and Claude Code.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/claude-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/claude-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>did:web:faf.one:claude-faf-mcp</code></td></tr><tr><th>Publisher</th><td>WolfeJAM</td></tr><tr><th>Version</th><td>v7.1.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/claude-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>claude-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">anthropic</span> <span class=\"tag\">claude</span> <span class=\"tag\">claude-ai</span> <span class=\"tag\">claude-desktop</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -467,7 +467,7 @@
       "claimed": true,
       "card": {
         "name": ".FAF Context",
-        "title": "MCP server · v4.0.1",
+        "title": "MCP server · v4.1.1",
         "oneLiner": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
         "description": ".FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.",
         "domain": "faf.one",
@@ -488,7 +488,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">.FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:faf-mcp</code></td></tr><tr><th>Version</th><td>v4.0.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">.FAF Context: persistent project context for Cursor, VS Code and every MCP-compatible IDE.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:faf.one:agent:faf-mcp</code></td></tr><tr><th>Version</th><td>v4.1.1</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://faf.one/\" target=\"_blank\" rel=\"noopener\">faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">claude</span> <span class=\"tag\">cline</span> <span class=\"tag\">cursor</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
@@ -506,7 +506,7 @@
       "claimed": true,
       "card": {
         "name": "Grok FAF",
-        "title": "MCP server · v2.1.0",
+        "title": "MCP server · v2.2.2",
         "oneLiner": "The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.",
         "description": "The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.",
         "domain": "grok.faf.one",
@@ -527,7 +527,7 @@
             "key": "about",
             "label": "About",
             "heading": "About",
-            "html": "<p class=\"lead\">The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/grok-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/grok-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:grok.faf.one:agent:grok-faf-mcp</code></td></tr><tr><th>Version</th><td>v2.1.0</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://grok.faf.one/\" target=\"_blank\" rel=\"noopener\">grok.faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/grok-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>grok-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-context-format</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">ai-tools</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
+            "html": "<p class=\"lead\">The first MCP server for Grok: persistent project context from your IANA-registered project.faf, scored always-33.</p><table class=\"kv\"><tbody><tr><th>Repository</th><td><a href=\"https://github.com/Wolfe-Jam/grok-faf-mcp\" target=\"_blank\" rel=\"noopener\">Wolfe-Jam/grok-faf-mcp</a></td></tr><tr><th>Agent ID</th><td><code>urn:air:grok.faf.one:agent:grok-faf-mcp</code></td></tr><tr><th>Version</th><td>v2.2.2</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Homepage</th><td><a href=\"https://grok.faf.one/\" target=\"_blank\" rel=\"noopener\">grok.faf.one</a></td></tr><tr><th>MCP Registry</th><td><code>one.faf/grok-faf-mcp</code></td></tr><tr><th>Package (npm)</th><td><code>grok-faf-mcp</code></td></tr><tr><th>Topics</th><td><span class=\"tag\">agents-md</span> <span class=\"tag\">ai</span> <span class=\"tag\">ai-context</span> <span class=\"tag\">ai-context-format</span> <span class=\"tag\">ai-readiness</span> <span class=\"tag\">ai-tools</span> <span class=\"tag\">developer-tools</span> <span class=\"tag\">faf</span></td></tr></tbody></table>"
           },
           {
             "key": "sources",
